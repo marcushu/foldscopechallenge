@@ -15,7 +15,7 @@ const Main = () => {
     const characterArray = textArea.split(' ').join('').split('');
     let charCounts = [];
 
-    let numberOfChars = char => characterArray.filter(el => el === char).length
+    const numberOfChars = char => characterArray.filter(el => el === char).length
 
     characterArray.forEach(el => {
       charCounts.push({ char: el, count: numberOfChars(el) });
@@ -27,12 +27,12 @@ const Main = () => {
 
 
   const findTopFive = characterCountFull => {
-    let charCounts = []
     const characterSet = new Set(characterCountFull); // no repeats
+    let charCounts = [];
+
+    const numberOfChars = char => characterCountFull.filter(el => el === char).length
 
     characterSet.forEach(el => {
-      let numberOfChars = char => characterCountFull.filter(el => el === char).length
-
       charCounts.push({ char: el, count: numberOfChars(el) });
     });
 
