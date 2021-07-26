@@ -10,15 +10,16 @@ const Main = () => {
   const [topFive, settopFive] = useState([]);
 
 
+  const  countCharacters = (char, charArray) => charArray.filter(character => character === char).length
+
+  
   const countChars = () => {
     // the text area as an array of characters, no spaces
     const characterArray = textArea.split(' ').join('').split('');
     let charCounts = [];
 
-    const numberOfChars = char => characterArray.filter(el => el === char).length
-
-    characterArray.forEach(el => {
-      charCounts.push({ char: el, count: numberOfChars(el) });
+    characterArray.forEach(character => {
+      charCounts.push({ char: character, count: countCharacters(character, characterArray) });
     });
 
     setCharacterCounts(charCounts);
@@ -30,10 +31,8 @@ const Main = () => {
     const characterSet = new Set(characterCountFull); // no repeats
     let charCounts = [];
 
-    const numberOfChars = char => characterCountFull.filter(el => el === char).length
-
-    characterSet.forEach(el => {
-      charCounts.push({ char: el, count: numberOfChars(el) });
+    characterSet.forEach(character => {
+      charCounts.push({ char: character, count: countCharacters(character, characterCountFull) });
     });
 
     charCounts.sort((a, b) => b.count - a.count);
