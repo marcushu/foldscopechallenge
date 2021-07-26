@@ -1,6 +1,10 @@
 import { Col, Row, Form } from "react-bootstrap";
 
-const TextInput = ({setTextArea}) => {
+interface TextInputProps {
+  setTextArea: React.Dispatch<React.SetStateAction<string>>
+}
+
+const TextInput = ({setTextArea}: TextInputProps) => {
   return (
     <Row className="pt-4">
       <Col>

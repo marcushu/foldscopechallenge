@@ -1,6 +1,10 @@
 import { Col, Row, Button } from "react-bootstrap";
 
-const AnalyzeBtn = ({countChars}) => {
+interface AnalyzeBtnProps {
+  countChars: () => void
+}
+
+const AnalyzeBtn = ({countChars}: AnalyzeBtnProps) => {
   return (
     <Row className="pb-4">
       <Col className="text-center">

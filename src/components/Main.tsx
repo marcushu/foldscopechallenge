@@ -2,21 +2,26 @@ import { useState } from "react";
 import CharCountTable from "./CharCountTable";
 import TopFive from './TopFive';
 import TextInput from './TextInput';
-import AnalyzeBtn from "./AnalyzeBtn";
+import AnalyzeBtn from './AnalyzeBtn';
+
+interface CharcountType {
+  char: string
+  count: number
+}
 
 const Main = () => {
   const [textArea, setTextArea] = useState("");
-  const [characterCounts, setCharacterCounts] = useState([]);
-  const [topFive, settopFive] = useState([]);
+  const [characterCounts, setCharacterCounts] = useState<CharcountType[]>([]);
+  const [topFive, settopFive] = useState<CharcountType[]>([]);
 
 
-  const  countCharacters = (char, charArray) => charArray.filter(character => character === char).length
+  const  countCharacters = (char: string, charArray: string[]) => charArray.filter(character => character === char).length
 
   
   const countChars = () => {
     // the text area as an array of characters, no spaces
     const characterArray = textArea.split(' ').join('').split('');
-    let charCounts = [];
+    let charCounts: CharcountType[] = [];
 
     characterArray.forEach(character => {
       charCounts.push({ char: character, count: countCharacters(character, characterArray) });
@@ -27,9 +32,9 @@ const Main = () => {
   }
 
 
-  const findTopFive = characterCountFull => {
+  const findTopFive = (characterCountFull: string[]) => {
     const characterSet = new Set(characterCountFull); // no repeats
-    let charCounts = [];
+    let charCounts: CharcountType[] = [];
 
     characterSet.forEach(character => {
       charCounts.push({ char: character, count: countCharacters(character, characterCountFull) });

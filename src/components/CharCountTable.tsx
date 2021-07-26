@@ -1,6 +1,15 @@
 import { Col, Row, Table } from "react-bootstrap";
 
-const CharCountTable = ({lookup}) => {
+interface CharcountType {
+  char: string
+  count: number
+}
+
+interface CharCountTableProps {
+  lookup: CharcountType[]
+}
+
+const CharCountTable = ({lookup}: CharCountTableProps) => {
   return (
     <Row>
       <Col style={{display: "flex", justifyContent: "center"}}>
